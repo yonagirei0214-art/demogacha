@@ -6,7 +6,6 @@
 <title>🎰 ガチャを引く</title>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
 :root{--bg:#08001a;--gold:#FFD700;--pink:#FF3AFF;--cyan:#00E5FF;--green:#00FF88;}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -675,47 +674,35 @@ function batchDownload(){
   if(!files.length)return;
   const btn=document.getElementById('batchDlBtn');
 
-  if(files.length===1){
-    // 1ファイルだけなら直接ダウンロード
-    dlSingle(st.results.findIndex(r=>r.dlUrl));
+  // 「景品名 + 元ファイル名」でユニーク化（同じ景品を複数回引いても1ファイルだけDL）
+  const seen=new Map(); // key: "prizeName|fileName" → {dlUrl, dlName}
+  for(const r of files){
+    const key=(r.prize?.name||'')+'|'+(r.dlName||'prize');
+    if(!seen.has(key))seen.set(key,{dlUrl:r.dlUrl,dlName:r.dlName||'prize'});
+  }
+  const unique=[...seen.values()];
+
+  if(unique.length===1){
+    const a=document.createElement('a');a.href=unique[0].dlUrl;a.download=unique[0].dlName;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
     return;
   }
 
-  // 複数ファイル → JSZipで1つにまとめる
-  btn.disabled=true;btn.textContent='ZIP作成中...';
-  (async()=>{
-    try{
-      const zip=new JSZip();
-      const seen=new Set();
-      for(const r of files){
-        // 重複ファイル名は (2) (3) のようにリネーム
-        let name=r.dlName||'prize';
-        if(seen.has(name)){
-          let c=2;const dot=name.lastIndexOf('.');
-          const base=dot>=0?name.slice(0,dot):name;
-          const ext=dot>=0?name.slice(dot):'';
-          while(seen.has(`${base} (${c})${ext}`))c++;
-          name=`${base} (${c})${ext}`;
-        }
-        seen.add(name);
-        const res=await fetch(r.dlUrl);
-        zip.file(name,await res.blob());
-      }
-      const content=await zip.generateAsync({type:'blob'},m=>{
-        btn.textContent=`ZIP作成中... ${Math.round(m.percent)}%`;
-      });
-      const url=URL.createObjectURL(content);
-      const a=document.createElement('a');
-      a.href=url;a.download='gacha-prizes.zip';
-      document.body.appendChild(a);a.click();document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+  // 複数ファイル → 順番に個別ダウンロード（JSZip不使用・Android Chrome対応）
+  btn.disabled=true;btn.textContent=`DL中... (0/${unique.length})`;
+  let idx=0;
+  function dlNext(){
+    if(idx>=unique.length){
       btn.disabled=false;btn.textContent='⬇ 全ファイルをまとめてDL';
-    }catch(e){
-      console.error('batchDownload error:',e);
-      btn.disabled=false;btn.textContent='⬇ 全ファイルをまとめてDL';
-      alert('ZIPの作成に失敗しました。個別DLをお試しください。');
+      return;
     }
-  })();
+    const {dlUrl,dlName}=unique[idx];
+    const a=document.createElement('a');a.href=dlUrl;a.download=dlName;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    idx++;btn.textContent=`DL中... (${idx}/${unique.length})`;
+    setTimeout(dlNext,700);
+  }
+  dlNext();
 }
 
 function closeResults(){showScreen('screen-gacha');setGachaBtn(true);}
