@@ -25,9 +25,7 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
 /* SCREENS */
 .screen{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(16px,5vw,32px);z-index:10;transition:opacity 0.35s ease;}
 .screen.hidden{opacity:0;pointer-events:none;}
-.logo{font-family:'Zen Dots',monospace;font-size:clamp(28px,8vw,48px);text-align:center;margin-bottom:6px;
-  background:linear-gradient(90deg,var(--gold),var(--pink),var(--cyan),var(--gold));background-size:300%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite;}
+.logo{font-family:'Zen Dots',monospace;font-size:clamp(28px,8vw,48px);text-align:center;margin-bottom:6px;background:linear-gradient(90deg,var(--gold),var(--pink),var(--cyan),var(--gold));background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite;}
 @keyframes shimmer{0%{background-position:0%}100%{background-position:300%}}
 .logo-sub{font-size:clamp(10px,2.5vw,13px);color:rgba(255,255,255,0.35);text-align:center;letter-spacing:0.2em;margin-bottom:clamp(20px,5vw,36px);}
 .conn-spinner{width:44px;height:44px;border:3px solid rgba(255,255,255,0.1);border-top-color:var(--cyan);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;}
@@ -54,8 +52,8 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
 .spins-num{font-family:'Zen Dots',monospace;font-size:clamp(22px,6vw,30px);color:var(--cyan);text-shadow:0 0 16px var(--cyan);line-height:1;}
 .sound-toggle{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:5px 10px;font-size:13px;cursor:pointer;transition:all 0.2s;color:rgba(255,255,255,0.6);}
 .sound-toggle:hover{background:rgba(255,255,255,0.15);}
-.gacha-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(16px,4vw,24px);gap:clamp(14px,4vw,22px);overflow:hidden;position:relative;}
-.gacha-machine-col{display:flex;flex-direction:column;align-items:center;gap:20px;}
+.gacha-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(16px,4vw,24px);gap:clamp(14px,4vw,20px);overflow:hidden;}
+.gacha-machine-col{display:flex;flex-direction:column;align-items:center;gap:18px;}
 .machine-orb{position:relative;width:clamp(140px,38vmin,180px);height:clamp(140px,38vmin,180px);border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(160,0,255,0.65),rgba(40,0,90,0.95));box-shadow:0 0 40px rgba(160,0,255,0.5),0 0 80px rgba(160,0,255,0.2),inset 0 0 40px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;animation:orbFloat 3s ease-in-out infinite;overflow:hidden;}
 .machine-orb::before{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid transparent;background:linear-gradient(135deg,var(--gold),var(--pink),var(--cyan),var(--gold)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;}
 .machine-orb::after{content:'';position:absolute;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(255,215,0,0.12) 20%,transparent 40%);animation:orbRing 4s linear infinite;}
@@ -63,19 +61,22 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
 @keyframes orbRing{to{transform:rotate(360deg)}}
 .machine-emoji{font-size:clamp(52px,15vmin,72px);z-index:1;animation:emojiPulse 2.5s ease-in-out infinite;}
 @keyframes emojiPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-.gacha-btn{background:linear-gradient(135deg,#9400ff,#ff00aa,#ff8c00);border:none;border-radius:50px;padding:clamp(14px,4vmin,18px) clamp(40px,10vw,64px);font-family:'Zen Dots',monospace;font-size:clamp(15px,4.5vmin,20px);color:#fff;cursor:pointer;box-shadow:0 6px 30px rgba(148,0,255,0.6),0 0 60px rgba(255,0,170,0.25);transition:all 0.15s;position:relative;overflow:hidden;text-shadow:0 0 10px rgba(255,255,255,0.4);min-width:clamp(180px,50vw,240px);}
+.gacha-btn{background:linear-gradient(135deg,#9400ff,#ff00aa,#ff8c00);border:none;border-radius:50px;padding:clamp(14px,4vmin,18px) clamp(40px,10vw,64px);font-family:'Zen Dots',monospace;font-size:clamp(15px,4.5vmin,20px);color:#fff;cursor:pointer;box-shadow:0 6px 30px rgba(148,0,255,0.6);transition:all 0.15s;position:relative;overflow:hidden;min-width:clamp(180px,50vw,240px);}
 .gacha-btn::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,0.12) 50%,transparent 70%);animation:btnShine 2.5s linear infinite;}
 @keyframes btnShine{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
 .gacha-btn:hover{transform:scale(1.04);}
 .gacha-btn:active{transform:scale(0.97);}
 .gacha-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none;}
-.skip-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:10px clamp(20px,6vw,32px);font-family:'Zen Dots',monospace;font-size:clamp(11px,3vmin,13px);color:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.2s;}
+.secondary-btns{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;}
+.skip-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:10px clamp(20px,6vw,32px);font-family:'Zen Dots',monospace;font-size:clamp(11px,3vmin,13px);color:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.2s;width:100%;max-width:260px;}
 .skip-btn:hover{background:rgba(255,255,255,0.13);color:#fff;}
 .skip-btn:disabled{opacity:0.3;cursor:not-allowed;}
+.history-btn{background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.2);border-radius:50px;padding:9px clamp(20px,6vw,32px);font-family:'Zen Dots',monospace;font-size:clamp(10px,2.5vmin,12px);color:rgba(0,229,255,0.6);cursor:pointer;transition:all 0.2s;width:100%;max-width:260px;}
+.history-btn:hover{background:rgba(0,229,255,0.12);color:var(--cyan);}
 .cost-hint{font-size:clamp(10px,2.5vmin,13px);color:rgba(255,255,255,0.3);font-family:'Zen Dots',monospace;}
 
 /* OVERLAY */
-#overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;padding:clamp(16px,5vw,32px);overflow-y:auto;gap:clamp(10px,3vmin,16px);}
+#overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;padding:clamp(16px,5vw,32px);overflow-y:auto;gap:clamp(8px,2.5vmin,14px);}
 #overlay.show{opacity:1;pointer-events:auto;}
 .overlay-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:36px;height:36px;font-size:18px;color:rgba(255,255,255,0.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
 .overlay-close:hover{background:rgba(255,255,255,0.18);color:#fff;}
@@ -90,27 +91,30 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
 .card-front{transform:rotateY(180deg);background:linear-gradient(135deg,rgba(18,0,36,0.97),rgba(8,0,18,0.97));border:3px solid rgba(255,255,255,0.3);flex-direction:column;gap:6px;}
 .card-rarity-label{font-family:'Zen Dots',monospace;font-size:clamp(11px,3vmin,14px);padding:3px 14px;border-radius:6px;letter-spacing:0.1em;color:#fff;white-space:nowrap;}
 .card-prize-emoji{font-size:clamp(36px,10vmin,52px);}
-.card-prize-name{font-size:clamp(12px,3.5vmin,15px);font-weight:700;text-align:center;color:#fff;text-shadow:0 0 10px rgba(255,255,255,0.4);line-height:1.4;max-width:100%;}
+.card-prize-name{font-size:clamp(12px,3.5vmin,15px);font-weight:700;text-align:center;color:#fff;line-height:1.4;max-width:100%;}
 .card-prize-text{font-size:clamp(10px,2.8vmin,13px);text-align:center;color:rgba(255,255,255,0.65);line-height:1.5;max-width:100%;word-break:break-word;border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;margin-top:2px;display:none;}
 @keyframes shake{0%,100%{transform:translateX(0) rotate(0)}10%{transform:translateX(-6px) rotate(-2deg)}25%{transform:translateX(7px) rotate(2.5deg)}40%{transform:translateX(-7px) rotate(-2.5deg)}55%{transform:translateX(6px) rotate(2deg)}70%{transform:translateX(-4px) rotate(-1deg)}85%{transform:translateX(3px) rotate(0.5deg)}}
 .shaking{animation:shake 0.85s ease-in-out;}
-.overlay-info{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:280px;}
+.overlay-info{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;max-width:280px;}
 .result-label{font-family:'Zen Dots',monospace;font-size:clamp(16px,5vmin,22px);text-align:center;opacity:0;transition:opacity 0.5s;min-height:1.3em;}
 .result-label.show{opacity:1;}
-.dl-btn{background:linear-gradient(135deg,#00cc66,#0066ff);border:none;border-radius:50px;padding:clamp(13px,3.5vmin,16px) clamp(28px,8vw,44px);font-family:'Zen Dots',monospace;font-size:clamp(13px,3.5vmin,15px);color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(0,200,100,0.5);transition:all 0.2s;opacity:0;pointer-events:none;min-width:clamp(180px,50vw,220px);}
+.dl-btn{background:linear-gradient(135deg,#00cc66,#0066ff);border:none;border-radius:50px;padding:clamp(12px,3.5vmin,15px) clamp(28px,8vw,44px);font-family:'Zen Dots',monospace;font-size:clamp(12px,3.5vmin,14px);color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(0,200,100,0.5);transition:all 0.2s;opacity:0;pointer-events:none;min-width:clamp(180px,50vw,220px);}
 .dl-btn.ready{opacity:1;pointer-events:auto;animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);}
 .dl-btn:hover{transform:scale(1.04);}
-.again-btn{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:50px;padding:clamp(10px,3vmin,13px) clamp(24px,7vw,36px);font-family:'Zen Dots',monospace;font-size:clamp(11px,3vmin,13px);color:rgba(255,255,255,0.55);cursor:pointer;transition:all 0.2s;opacity:0;pointer-events:none;}
+.again-btn{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:50px;padding:clamp(9px,2.5vmin,12px) clamp(22px,7vw,34px);font-family:'Zen Dots',monospace;font-size:clamp(11px,3vmin,13px);color:rgba(255,255,255,0.55);cursor:pointer;transition:all 0.2s;opacity:0;pointer-events:none;}
 .again-btn.ready{opacity:1;pointer-events:auto;animation:popIn 0.4s 0.1s cubic-bezier(0.34,1.56,0.64,1) both;}
 .again-btn:hover{background:rgba(255,255,255,0.14);color:#fff;}
-.to-results-btn{background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.4);border-radius:50px;padding:clamp(10px,3vmin,13px) clamp(24px,7vw,36px);font-family:'Zen Dots',monospace;font-size:clamp(11px,3vmin,13px);color:var(--gold);cursor:pointer;transition:all 0.2s;opacity:0;pointer-events:none;}
+.to-results-btn{background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.4);border-radius:50px;padding:clamp(9px,2.5vmin,12px) clamp(22px,7vw,34px);font-family:'Zen Dots',monospace;font-size:clamp(11px,3vmin,13px);color:var(--gold);cursor:pointer;transition:all 0.2s;opacity:0;pointer-events:none;}
 .to-results-btn.ready{opacity:1;pointer-events:auto;animation:popIn 0.4s 0.1s cubic-bezier(0.34,1.56,0.64,1) both;}
 .to-results-btn:hover{background:rgba(255,215,0,0.25);}
-.skip-all-btn{background:rgba(255,50,80,0.12);border:1px solid rgba(255,50,80,0.35);border-radius:50px;padding:9px 24px;font-family:'Zen Dots',monospace;font-size:11px;color:rgba(255,120,140,0.9);cursor:pointer;transition:all 0.2s;opacity:0;pointer-events:none;}
-.skip-all-btn.show{opacity:1;pointer-events:auto;animation:popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);}
-.skip-all-btn:hover{background:rgba(255,50,80,0.25);}border:1px solid rgba(255,140,0,0.3);border-radius:50px;padding:9px 24px;font-family:'Zen Dots',monospace;font-size:11px;color:rgba(255,180,0,0.8);cursor:pointer;transition:all 0.2s;opacity:0;pointer-events:none;}
+/* ⏩ 残りをスキップ（amber） */
+.skip-overlay-btn{background:rgba(255,140,0,0.08);border:1px solid rgba(255,140,0,0.3);border-radius:50px;padding:9px 24px;font-family:'Zen Dots',monospace;font-size:11px;color:rgba(255,180,0,0.8);cursor:pointer;transition:all 0.2s;opacity:0;pointer-events:none;}
 .skip-overlay-btn.show{opacity:1;pointer-events:auto;animation:popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);}
 .skip-overlay-btn:hover{background:rgba(255,140,0,0.2);}
+/* 🚀 全スキップ（red） */
+.skip-all-btn{background:rgba(255,50,80,0.08);border:1px solid rgba(255,50,80,0.3);border-radius:50px;padding:9px 24px;font-family:'Zen Dots',monospace;font-size:11px;color:rgba(255,120,140,0.8);cursor:pointer;transition:all 0.2s;opacity:0;pointer-events:none;}
+.skip-all-btn.show{opacity:1;pointer-events:auto;animation:popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);}
+.skip-all-btn:hover{background:rgba(255,50,80,0.2);}
 @keyframes popIn{from{transform:scale(0.5);opacity:0}to{transform:scale(1);opacity:1}}
 
 /* FAST MODE */
@@ -125,8 +129,7 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
 .fast-actions{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:20px;}
 .fast-results-btn{background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.4);border-radius:50px;padding:12px 32px;font-family:'Zen Dots',monospace;font-size:12px;color:var(--gold);cursor:pointer;transition:all 0.2s;display:none;}
 .fast-results-btn.show{display:block;}
-.fast-cancel{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:50px;padding:11px 32px;font-family:'Zen Dots',monospace;font-size:11px;color:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.2s;}
-.fast-cancel:hover{background:rgba(255,255,255,0.12);color:#fff;}
+.fast-cancel{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:50px;padding:11px 32px;font-family:'Zen Dots',monospace;font-size:11px;color:rgba(255,255,255,0.4);cursor:pointer;}
 
 /* RESULTS */
 #screen-results{justify-content:flex-start;padding:0;}
@@ -151,8 +154,29 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
 .batch-dl-btn{background:linear-gradient(135deg,#00cc66,#0066ff);border:none;border-radius:50px;padding:14px;font-family:'Zen Dots',monospace;font-size:14px;color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(0,200,100,0.4);transition:all 0.2s;width:100%;}
 .batch-dl-btn:hover{transform:scale(1.02);}
 .batch-dl-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none;}
-.close-results-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:11px;font-size:13px;color:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.2s;width:100%;font-family:'Noto Sans JP',sans-serif;}
+.close-results-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:11px;font-size:13px;color:rgba(255,255,255,0.5);cursor:pointer;width:100%;font-family:'Noto Sans JP',sans-serif;}
 .close-results-btn:hover{background:rgba(255,255,255,0.12);color:#fff;}
+
+/* HISTORY */
+#screen-history{justify-content:flex-start;padding:0;}
+.history-wrap{width:100%;height:100%;display:flex;flex-direction:column;}
+.history-header{padding:clamp(12px,3vw,18px) clamp(16px,4vw,24px);background:rgba(0,0,0,0.5);border-bottom:1px solid rgba(0,229,255,0.2);flex-shrink:0;}
+.history-title{font-family:'Zen Dots',monospace;font-size:clamp(15px,4.5vw,20px);color:var(--cyan);margin-bottom:4px;}
+.history-sub{font-size:11px;color:rgba(255,255,255,0.35);}
+.history-list{flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:12px;}
+.history-session{background:rgba(0,0,0,0.25);border:1px solid rgba(74,0,112,0.4);border-radius:10px;overflow:hidden;}
+.history-session-hdr{padding:8px 14px;background:rgba(0,0,0,0.3);font-family:'Zen Dots',monospace;font-size:10px;color:rgba(255,255,255,0.35);display:flex;justify-content:space-between;align-items:center;}
+.history-item{display:flex;align-items:center;gap:8px;padding:9px 14px;border-top:1px solid rgba(74,0,112,0.2);}
+.hi-badge{font-family:'Zen Dots',monospace;font-size:9px;padding:2px 7px;border-radius:4px;color:#fff;white-space:nowrap;flex-shrink:0;}
+.hi-info{flex:1;min-width:0;}
+.hi-name{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hi-text{font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hi-dl{background:rgba(0,200,100,0.15);border:1px solid rgba(0,200,100,0.3);color:#00cc66;border-radius:8px;padding:5px 10px;font-size:10px;cursor:pointer;white-space:nowrap;font-family:'Zen Dots',monospace;}
+.hi-copy{background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.25);color:var(--gold);border-radius:8px;padding:5px 10px;font-size:10px;cursor:pointer;white-space:nowrap;font-family:'Zen Dots',monospace;}
+.history-footer{padding:14px 16px;border-top:1px solid rgba(0,229,255,0.15);background:rgba(0,0,0,0.4);flex-shrink:0;display:flex;flex-direction:column;gap:8px;}
+.hist-back-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:12px;font-size:13px;color:rgba(255,255,255,0.5);cursor:pointer;width:100%;font-family:'Noto Sans JP',sans-serif;}
+.hist-clear-btn{background:rgba(255,50,80,0.08);border:1px solid rgba(255,50,80,0.25);border-radius:50px;padding:10px;font-size:11px;color:rgba(255,100,120,0.7);cursor:pointer;width:100%;font-family:'Zen Dots',monospace;}
+.empty-history{text-align:center;padding:40px 20px;color:rgba(255,255,255,0.3);font-size:13px;}
 
 @media(min-width:768px){
   .gacha-body{flex-direction:row;justify-content:center;align-items:center;gap:clamp(40px,6vw,80px);}
@@ -190,7 +214,7 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
     <button class="again-btn" id="nextBtn" onclick="nextSpin()">次を引く →</button>
     <button class="to-results-btn" id="toResultsBtn" onclick="showResults()">🎉 リザルトを見る</button>
     <button class="skip-overlay-btn" id="skipOverlayBtn" onclick="skipToFast()">⏩ 残りをスキップ</button>
-    <button class="skip-all-btn" id="skipAllBtn" onclick="skipAll()">🚀 全スキップ（引かずに結果へ）</button>
+    <button class="skip-all-btn" id="skipAllBtn" onclick="skipAll()">🚀 全スキップ（今の分で結果へ）</button>
   </div>
 </div>
 
@@ -220,7 +244,7 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
     <div class="gacha-header">
       <div class="g-name">こんにちは、<span id="playerName">-</span></div>
       <div class="header-right">
-        <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="音声ON/OFF">🔊</button>
+        <button class="sound-toggle" id="soundToggle" onclick="toggleSound()">🔊</button>
         <div class="spins-info">
           <span class="spins-label">残り</span>
           <span class="spins-num" id="spinsNum">0</span>
@@ -232,7 +256,10 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
       <div class="gacha-machine-col">
         <div class="machine-orb"><div class="machine-emoji">🎰</div></div>
         <button class="gacha-btn" id="gachaBtn" onclick="spin()">GACHA !</button>
-        <button class="skip-btn" id="fastBtn" onclick="startFastSpin()">⏩ まとめて引く（アニメなし）</button>
+        <div class="secondary-btns">
+          <button class="skip-btn" id="fastBtn" onclick="startFastSpin()">⏩ まとめて引く（アニメなし）</button>
+          <button class="history-btn" id="histBtn" onclick="showHistory()" style="display:none;">📦 過去の景品を確認</button>
+        </div>
         <div class="cost-hint" id="costHint"></div>
       </div>
     </div>
@@ -262,14 +289,29 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
     </div>
     <div class="results-list" id="resultsList"></div>
     <div class="results-footer">
-      <button class="batch-dl-btn" id="batchDlBtn" onclick="batchDownload()" style="display:none;">⬇ 全ファイルをまとめてDL</button>
+      <button class="batch-dl-btn" id="batchDlBtn" style="display:none;">⬇ 全ファイルをまとめてDL</button>
       <button class="close-results-btn" onclick="closeResults()">閉じる</button>
     </div>
   </div>
 </div>
 
+<!-- 過去の景品履歴 -->
+<div class="screen hidden" id="screen-history">
+  <div class="history-wrap">
+    <div class="history-header">
+      <div class="history-title">📦 過去の景品</div>
+      <div class="history-sub">ページを閉じても保存されています</div>
+    </div>
+    <div class="history-list" id="historyList"></div>
+    <div class="history-footer">
+      <button class="hist-back-btn" onclick="showScreen('screen-gacha')">← 戻る</button>
+      <button class="hist-clear-btn" onclick="clearHistory()">🗑 履歴をすべて削除</button>
+    </div>
+  </div>
+</div>
+
 <script>
-/* STARS */
+/* ===== STARS ===== */
 (()=>{
   const c=document.getElementById('starCanvas'),ctx=c.getContext('2d');let stars=[];
   const resize=()=>{c.width=innerWidth;c.height=innerHeight;stars=Array.from({length:110},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.4+0.3,op:Math.random(),spd:Math.random()*0.006+0.002}));};
@@ -277,7 +319,7 @@ body{background:var(--bg);color:#fff;font-family:'Noto Sans JP',sans-serif;
   window.addEventListener('resize',resize);resize();draw();
 })();
 
-/* PARTICLES */
+/* ===== PARTICLES ===== */
 const pCanvas=document.getElementById('particleCanvas'),pCtx=pCanvas.getContext('2d');
 const rpCanvas=()=>{pCanvas.width=innerWidth;pCanvas.height=innerHeight;};
 window.addEventListener('resize',rpCanvas);rpCanvas();
@@ -299,12 +341,9 @@ function spawnParticles(x,y,color,count){
   requestAnimationFrame(animP);
 })();
 
-/* AUDIO */
+/* ===== AUDIO ===== */
 let soundEnabled=true;
-function toggleSound(){
-  soundEnabled=!soundEnabled;
-  document.getElementById('soundToggle').textContent=soundEnabled?'🔊':'🔇';
-}
+function toggleSound(){soundEnabled=!soundEnabled;document.getElementById('soundToggle').textContent=soundEnabled?'🔊':'🔇';}
 function playSound(win){
   if(!soundEnabled)return;
   try{const ctx=new(window.AudioContext||window.webkitAudioContext)();
@@ -317,35 +356,113 @@ function playSound(win){
   }catch(e){}
 }
 
-/* STATE */
+/* ===== HTML ESCAPE ===== */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+/* ===== INDEXEDDB (GUEST HISTORY) ===== */
+const HIST_DB='gacha-guest-prizes';
+const HIST_STORE='prizes';
+let _histDb=null;
+
+function openHistDb(){
+  return new Promise((res,rej)=>{
+    const req=indexedDB.open(HIST_DB,1);
+    req.onupgradeneeded=e=>{
+      const db=e.target.result;
+      if(!db.objectStoreNames.contains(HIST_STORE)){
+        const store=db.createObjectStore(HIST_STORE,{keyPath:'id',autoIncrement:true});
+        store.createIndex('sessionId','sessionId');
+      }
+    };
+    req.onsuccess=e=>{_histDb=e.target.result;res(_histDb);};
+    req.onerror=rej;
+  });
+}
+
+async function savePrizeToHistory(result,sessionId,sessionLabel){
+  if(!_histDb||!result.arrayBuffer)return;
+  try{
+    const tx=_histDb.transaction(HIST_STORE,'readwrite');
+    tx.objectStore(HIST_STORE).add({
+      sessionId,sessionLabel,
+      timestamp:Date.now(),
+      rarityName:result.rarity.name,
+      rarityColor:result.rarity.color,
+      prizeName:result.prize.name,
+      prizeText:result.prize.text||'',
+      hasFile:true,
+      dlName:result.dlName,
+      dlMime:result.dlMime,
+      arrayBuffer:result.arrayBuffer
+    });
+  }catch(e){console.warn('savePrizeToHistory failed:',e);}
+}
+
+async function loadAllHistory(){
+  if(!_histDb)return[];
+  return new Promise((res,rej)=>{
+    const tx=_histDb.transaction(HIST_STORE,'readonly');
+    const req=tx.objectStore(HIST_STORE).getAll();
+    req.onsuccess=e=>res(e.target.result||[]);
+    req.onerror=rej;
+  });
+}
+
+async function deleteHistItem(id){
+  if(!_histDb)return;
+  const tx=_histDb.transaction(HIST_STORE,'readwrite');
+  tx.objectStore(HIST_STORE).delete(id);
+}
+
+async function clearAllHistory(){
+  if(!_histDb)return;
+  const tx=_histDb.transaction(HIST_STORE,'readwrite');
+  tx.objectStore(HIST_STORE).clear();
+}
+
+async function checkHistoryExists(){
+  if(!_histDb)return false;
+  const all=await loadAllHistory();
+  return all.length>0;
+}
+
+/* ===== STATE ===== */
 const st={
   peer:null,conn:null,name:null,remainingSpins:0,costPerSpin:0,
   spinning:false,animDone:false,fileDone:false,
   dlUrl:null,dlName:null,dlMime:'application/octet-stream',
   chunks:[],totalChunks:0,pendingHasFile:false,
   results:[],currentResultIdx:-1,
-  fastMode:false,fastTotal:0,fastStartIdx:0
+  fastMode:false,fastTotal:0,fastStartIdx:0,
+  sessionId:null,sessionLabel:'',
+  ignoreSpins:0  // キャンセル後のstale応答を無視するカウンタ
 };
 
-/* CONNECTION */
+// ZIPの事前生成用
+let _zipUrl=null;
+let _zipName='gacha-prizes.zip';
+
+/* ===== CONNECTION ===== */
 const params=new URLSearchParams(location.search);
 const roomId=params.get('room');
 let _reconnecting=false;
 
-window.onload=()=>{
+window.onload=async()=>{
+  await openHistDb().catch(()=>{});
+  const hasHist=await checkHistoryExists().catch(()=>false);
+  if(hasHist){document.getElementById('histBtn').style.display='';}
   if(!roomId){showError('URLにルームIDがありません。\nライバーから受け取ったURLを開いてください。');return;}
   connect();
 };
 
 function connect(){
-  // 古いPeerを確実に破棄してから新規作成
-  if(st.peer&&!st.peer.destroyed){st.peer.destroy();}
+  if(st.peer&&!st.peer.destroyed)st.peer.destroy();
   st.peer=null;st.conn=null;
   setConnText('ルームに接続中...');
   const peer=new Peer({debug:0});
   st.peer=peer;
   peer.on('open',()=>{
-    if(peer!==st.peer)return;// 古いインスタンスなら無視
+    if(peer!==st.peer)return;
     setConnText('ホストに接続中...');
     const conn=peer.connect(roomId,{reliable:true});
     st.conn=conn;
@@ -353,10 +470,9 @@ function connect(){
     conn.on('data',onData);
     conn.on('close',()=>{
       if(conn!==st.conn)return;
-      // ファストモード中・リザルト画面中は再接続しない
       if(st.fastMode)return;
       const cur=getCurrentScreen();
-      if(cur==='screen-results')return;
+      if(cur==='screen-results'||cur==='screen-history')return;
       setConnText('ホストと再接続中...');
       showScreen('screen-connecting');
       if(!_reconnecting){_reconnecting=true;setTimeout(()=>connect(),3000);}
@@ -366,16 +482,15 @@ function connect(){
   });
   peer.on('error',e=>{
     if(peer!==st.peer)return;
-    if(e.type==='peer-unavailable'){setConnText('ルームが見つかりません。3秒後に再試行...');setTimeout(()=>connect(),3000);}
-    else if(['network','server-error','socket-error','socket-closed'].includes(e.type)){
-      setConnText('サーバーエラー。再接続中...');setTimeout(()=>connect(),3000);}
-    else{showError('接続エラー: '+e.type+'\n'+e.message);}
+    if(['peer-unavailable','network','server-error','socket-error','socket-closed'].includes(e.type)){
+      setConnText('再接続中...');setTimeout(()=>connect(),3000);}
+    else showError('接続エラー: '+e.type);
   });
 }
 
 function getCurrentScreen(){
-  const screens=['screen-connecting','screen-name','screen-gacha','screen-spinning','screen-results'];
-  return screens.find(id=>!document.getElementById(id).classList.contains('hidden'))||'';
+  return['screen-connecting','screen-name','screen-gacha','screen-spinning','screen-results','screen-history']
+    .find(id=>!document.getElementById(id).classList.contains('hidden'))||'';
 }
 
 function onData(data){
@@ -383,7 +498,9 @@ function onData(data){
   switch(data.type){
     case 'welcome':
       st.remainingSpins=data.remainingSpins;st.costPerSpin=data.costPerSpin;
-      st.results=[];st.currentResultIdx=-1;
+      st.results=[];st.currentResultIdx=-1;_zipUrl=null;
+      st.sessionId='sess-'+Date.now();
+      st.sessionLabel=new Date().toLocaleString('ja-JP',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
       document.getElementById('playerName').textContent=data.name||st.name;
       document.getElementById('spinsNum').textContent=st.remainingSpins;
       document.getElementById('costHint').textContent=data.costPerSpin+'Pt / 1回';
@@ -392,43 +509,39 @@ function onData(data){
       showScreen('screen-name');
       document.getElementById('nameError').innerHTML=`<div class="error-box">${data.message}</div>`;break;
     case 'spin_result':
+      // キャンセル後のstale応答を無視
+      if(st.ignoreSpins>0){st.ignoreSpins--;break;}
       st.pendingHasFile=data.prize.hasFile;
       st.remainingSpins=data.remainingSpins;
       document.getElementById('spinsNum').textContent=st.remainingSpins;
       if(!data.prize.hasFile)st.fileDone=true;
-      st.results.push({rarity:data.rarity,prize:data.prize,dlUrl:null,dlName:null});
+      st.results.push({rarity:data.rarity,prize:data.prize,dlUrl:null,dlName:null,dlMime:null,arrayBuffer:null});
       st.currentResultIdx=st.results.length-1;
       if(st.fastMode){
         updateFastProgress();
         if(!data.prize.hasFile){clearTimeout(_spinTimeout);st.spinning=false;sendNextFastSpin();}
-      }else{showCardResult(data.rarity,data.prize);}
+      }else showCardResult(data.rarity,data.prize);
       break;
     case 'spin_denied':
-      if(st.fastMode){
-        // ファストモード中に拒否 → 終了して結果表示
-        st.fastMode=false;clearTimeout(_spinTimeout);showResults();
-      }else{
-        forceCloseOverlay();
-        alert(data.message||'残り回数がないか、エラーが発生しました。');
-      }
+      if(st.fastMode){st.fastMode=false;clearTimeout(_spinTimeout);showResults();}
+      else{forceCloseOverlay();alert(data.message||'残り回数がないか、エラーが発生しました。');}
       break;
     case 'file_start':
       st.chunks=new Array(data.totalChunks);st.totalChunks=data.totalChunks;
       st.dlName=data.fileName;st.dlMime=data.mimeType||'application/octet-stream';break;
-    case 'file_chunk':
-      st.chunks[data.i]=data.d;break;
-    case 'file_end':
-      buildFile();break;
+    case 'file_chunk':st.chunks[data.i]=data.d;break;
+    case 'file_end':buildFile();break;
     case 'spins_update':
       st.remainingSpins=data.remainingSpins;
       document.getElementById('spinsNum').textContent=st.remainingSpins;break;
   }
 }
 
-/* SPIN */
+/* ===== SPIN ===== */
 let _spinTimeout=null;
 function spin(){
   if(st.spinning||st.remainingSpins<=0)return;
+  if(!st.conn?.open){alert('ホストと接続されていません。再接続してください。');return;}
   st.spinning=true;st.animDone=false;st.fileDone=false;st.dlUrl=null;
   setGachaBtn(false);
   st.conn.send({type:'spin_request'});
@@ -443,13 +556,13 @@ function setGachaBtn(enabled){
   const fBtn=document.getElementById('fastBtn');
   btn.disabled=!enabled;
   if(fBtn)fBtn.disabled=!enabled;
-  if(!enabled){btn.textContent='引いています...';}
+  if(!enabled)btn.textContent='引いています...';
   else if(st.remainingSpins<=0){btn.textContent='終了';btn.disabled=true;if(fBtn)fBtn.disabled=true;}
-  else{btn.textContent='GACHA !';}
+  else btn.textContent='GACHA !';
 }
 
-/* OVERLAY */
-function showOverlay(){
+/* ===== OVERLAY ===== */
+function resetOverlay(){
   document.getElementById('dlBtn').className='dl-btn';
   document.getElementById('nextBtn').className='again-btn';
   document.getElementById('toResultsBtn').className='to-results-btn';
@@ -460,8 +573,9 @@ function showOverlay(){
   const front=document.getElementById('cardFront');
   front.className='card-face card-front';front.style.border='3px solid rgba(255,255,255,0.3)';front.style.boxShadow='';
   document.getElementById('cardPrizeText').style.display='none';
-  document.getElementById('overlay').classList.add('show');
 }
+
+function showOverlay(){resetOverlay();document.getElementById('overlay').classList.add('show');}
 
 function showCardResult(rarity,prize){
   clearTimeout(_spinTimeout);
@@ -471,20 +585,18 @@ function showCardResult(rarity,prize){
   setTimeout(()=>{
     inner.classList.remove('shaking');
     const front=document.getElementById('cardFront');
-    front.style.border=`3px solid ${color}`;
-    front.style.boxShadow=`0 0 30px ${color}aa,0 0 60px ${color}44`;
+    front.style.border=`3px solid ${color}`;front.style.boxShadow=`0 0 30px ${color}aa,0 0 60px ${color}44`;
     const lbl=document.getElementById('cardRarityLabel');
     lbl.textContent=rarity.name;lbl.style.background=color;lbl.style.boxShadow=`0 0 12px ${color}88`;
     document.getElementById('cardEmoji').textContent=prize.hasFile?'📦':'💌';
     document.getElementById('cardPrizeName').textContent=prize.name;
     const textEl=document.getElementById('cardPrizeText');
-    if(prize.text){textEl.textContent=prize.text;textEl.style.display='block';}else{textEl.style.display='none';}
+    if(prize.text){textEl.textContent=prize.text;textEl.style.display='block';}else textEl.style.display='none';
     inner.classList.add('flip');
     setTimeout(()=>{
       playSound(true);
-      const el=document.getElementById('flashEl');
-      el.style.background=color;el.style.opacity='0.5';
-      setTimeout(()=>{el.style.opacity='0';},80);
+      const el=document.getElementById('flashEl');el.style.background=color;el.style.opacity='0.5';
+      setTimeout(()=>el.style.opacity='0',80);
       const sl=document.getElementById('scanLine');
       sl.style.background=`linear-gradient(90deg,transparent,${color},transparent)`;
       sl.classList.remove('go');void sl.offsetWidth;sl.classList.add('go');
@@ -500,25 +612,32 @@ function showCardResult(rarity,prize){
 function buildFile(){
   try{
     const b64=st.chunks.join('');const bin=atob(b64);
-    const bytes=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
+    const bytes=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
+    const ab=bytes.buffer.slice(0);// ArrayBufferのコピーを保存
     st.dlUrl=URL.createObjectURL(new Blob([bytes],{type:st.dlMime}));
     if(st.currentResultIdx>=0){
-      st.results[st.currentResultIdx].dlUrl=st.dlUrl;
-      st.results[st.currentResultIdx].dlName=st.dlName;
+      const r=st.results[st.currentResultIdx];
+      r.dlUrl=st.dlUrl;r.dlName=st.dlName;r.dlMime=st.dlMime;
+      r.arrayBuffer=ab;// ←IndexedDB保存・ZIP生成用に保持
+      // IndexedDBへ保存（ファイルあり景品のみ）
+      savePrizeToHistory(r,st.sessionId,st.sessionLabel).then(()=>{
+        document.getElementById('histBtn').style.display='';
+      });
     }
     st.fileDone=true;
     if(st.fastMode){clearTimeout(_spinTimeout);st.spinning=false;sendNextFastSpin();}
-    else{tryShowDl();}
+    else tryShowDl();
   }catch(e){console.error('buildFile error:',e);}
 }
 
 function tryShowDl(){
-  if(!st.animDone)return;
-  if(st.pendingHasFile&&!st.fileDone)return;
+  if(!st.animDone||( st.pendingHasFile&&!st.fileDone))return;
   st.spinning=false;
   if(st.pendingHasFile&&st.dlUrl){
     const dlBtn=document.getElementById('dlBtn');
-    dlBtn.className='dl-btn ready';dlBtn.onclick=downloadFile;
+    dlBtn.className='dl-btn ready';
+    dlBtn.onclick=()=>dlBlob(st.dlUrl,st.dlName);
   }
   if(st.remainingSpins>0){
     document.getElementById('nextBtn').className='again-btn ready';
@@ -530,23 +649,14 @@ function tryShowDl(){
   setGachaBtn(true);
 }
 
-function downloadFile(){
-  const a=document.createElement('a');a.href=st.dlUrl;a.download=st.dlName||'prize';
+function dlBlob(url,name){
+  const a=document.createElement('a');a.href=url;a.download=name||'prize';
   document.body.appendChild(a);a.click();document.body.removeChild(a);
 }
 
 function nextSpin(){
-  const inner=document.getElementById('cardInner');
-  inner.style.transition='none';inner.classList.remove('flip');void inner.offsetWidth;inner.style.transition='';
-  document.getElementById('cardFront').style.border='3px solid rgba(255,255,255,0.3)';
-  document.getElementById('cardFront').style.boxShadow='';
-  document.getElementById('resultLabel').className='result-label';document.getElementById('resultLabel').textContent='';
-  document.getElementById('dlBtn').className='dl-btn';
-  document.getElementById('nextBtn').className='again-btn';
-  document.getElementById('toResultsBtn').className='to-results-btn';
-  document.getElementById('skipOverlayBtn').className='skip-overlay-btn';
-  document.getElementById('skipAllBtn').className='skip-all-btn';
-  document.getElementById('cardPrizeText').style.display='none';
+  if(!st.conn?.open)return;
+  resetOverlay();
   st.animDone=false;st.fileDone=false;st.dlUrl=null;st.spinning=true;
   _spinTimeout=setTimeout(()=>{
     if(st.spinning&&!st.fastMode){forceCloseOverlay();alert('タイムアウト：ホストからの返答がありませんでした。');}
@@ -555,26 +665,29 @@ function nextSpin(){
 }
 
 function forceCloseOverlay(){
-  clearTimeout(_spinTimeout);
-  st.fastMode=false;// fastMode もリセット
+  clearTimeout(_spinTimeout);st.fastMode=false;
   document.getElementById('overlay').classList.remove('show');
   st.spinning=false;setGachaBtn(true);
 }
 
-/* FAST MODE */
+function skipAll(){
+  clearTimeout(_spinTimeout);st.fastMode=false;st.spinning=false;
+  document.getElementById('overlay').classList.remove('show');
+  showResults();
+}
+
+/* ===== FAST MODE ===== */
 function startFastSpin(){
   if(st.spinning||st.remainingSpins<=0)return;
-  st.fastMode=true;
-  st.fastTotal=st.remainingSpins;
-  st.fastStartIdx=st.results.length;// 今回のファスト開始インデックス
+  if(!st.conn?.open){alert('ホストと接続されていません。');return;}
+  st.fastMode=true;st.fastTotal=st.remainingSpins;st.fastStartIdx=st.results.length;
   document.getElementById('fastCountTotal').textContent='/ '+st.fastTotal;
   document.getElementById('fastCountNum').textContent='0';
   document.getElementById('fastBarFill').style.width='0%';
   document.getElementById('fastLatest').textContent='';
   document.getElementById('fastResultsBtn').className='fast-results-btn';
   document.getElementById('overlay').classList.remove('show');
-  showScreen('screen-spinning');
-  sendNextFastSpin();
+  showScreen('screen-spinning');sendNextFastSpin();
 }
 
 function skipToFast(){startFastSpin();}
@@ -582,145 +695,187 @@ function skipToFast(){startFastSpin();}
 function sendNextFastSpin(){
   if(st.remainingSpins<=0){st.fastMode=false;showResults();return;}
   st.spinning=true;st.animDone=false;st.fileDone=false;st.dlUrl=null;st.pendingHasFile=false;
-  _spinTimeout=setTimeout(()=>{
-    if(st.spinning&&st.fastMode){
-      // タイムアウト → 収集した分でリザルトへ
-      st.fastMode=false;showResults();
-    }
-  },12000);
+  _spinTimeout=setTimeout(()=>{if(st.spinning&&st.fastMode){st.fastMode=false;showResults();}},12000);
   st.conn.send({type:'spin_request'});
 }
 
 function updateFastProgress(){
-  const fastDone=st.results.length-st.fastStartIdx;
-  const pct=Math.round(fastDone/st.fastTotal*100);
-  document.getElementById('fastCountNum').textContent=fastDone;
+  const done=st.results.length-st.fastStartIdx;
+  const pct=Math.round(done/st.fastTotal*100);
+  document.getElementById('fastCountNum').textContent=done;
   document.getElementById('fastBarFill').style.width=pct+'%';
   const last=st.results[st.results.length-1];
   if(last)document.getElementById('fastLatest').textContent=`${last.rarity.name}：${last.prize.name}`;
-  // 1件以上あれば途中リザルトボタンを表示
-  if(fastDone>0)document.getElementById('fastResultsBtn').className='fast-results-btn show';
+  if(done>0)document.getElementById('fastResultsBtn').className='fast-results-btn show';
 }
 
 function cancelFastMode(){
   clearTimeout(_spinTimeout);
   st.fastMode=false;st.spinning=false;
-  if(st.results.length>0){
-    if(confirm('引いた分のリザルトを見ますか？')){showResults();return;}
-  }
+  // キャンセル時点で未受信のspin_resultを1件無視
+  if(st.conn?.open)st.ignoreSpins++;
+  if(st.results.length>0){if(confirm('引いた分のリザルトを見ますか？')){showResults();return;}}
   showScreen('screen-gacha');setGachaBtn(true);
 }
 
-/* RESULTS */
+/* ===== RESULTS ===== */
 function showResults(){
-  clearTimeout(_spinTimeout);
-  st.fastMode=false;
+  clearTimeout(_spinTimeout);st.fastMode=false;
   document.getElementById('overlay').classList.remove('show');
   renderResults();
   showScreen('screen-results');
+  prepareZip();// ZIPを事前生成
 }
 
 function renderResults(){
   const list=document.getElementById('resultsList');
   const stats=document.getElementById('resultsStats');
-  const hasFiles=st.results.some(r=>r.dlUrl);
-  document.getElementById('batchDlBtn').style.display=hasFiles?'block':'none';
+  const btn=document.getElementById('batchDlBtn');
+  const hasFiles=st.results.some(r=>r.arrayBuffer);
+  // 古いblob URLを解放
+  if(_zipUrl){URL.revokeObjectURL(_zipUrl);_zipUrl=null;}
+  btn.style.display=hasFiles?'block':'none';
+  btn.textContent=hasFiles?'⏳ ZIP準備中...':'';
+  btn.disabled=true;btn.onclick=null;
 
   const countMap={};
   st.results.forEach(r=>{const k=r.rarity.name;countMap[k]={count:(countMap[k]?.count||0)+1,color:r.rarity.color};});
   stats.innerHTML=`<span style="font-size:11px;color:rgba(255,255,255,0.4);font-family:'Zen Dots',monospace;line-height:2;">全${st.results.length}回</span> `
-    +Object.entries(countMap).map(([name,{count,color}])=>
-      `<span class="rstat" style="background:${color}22;color:${color};border-color:${color}44;">${name} ×${count}</span>`
-    ).join('');
+    +Object.entries(countMap).map(([n,{count,color}])=>
+      `<span class="rstat" style="background:${color}22;color:${color};border-color:${color}44;">${n} ×${count}</span>`).join('');
 
   list.innerHTML=st.results.map((r,i)=>`
     <div class="result-item" style="border-left-color:${r.rarity.color};">
-      <span class="ri-badge" style="background:${r.rarity.color};">${r.rarity.name}</span>
+      <span class="ri-badge" style="background:${r.rarity.color};">${esc(r.rarity.name)}</span>
       <div class="ri-info">
-        <div class="ri-name">${r.prize.name}</div>
-        ${r.prize.text?`<div class="ri-text">${r.prize.text}</div>`:''}
+        <div class="ri-name">${esc(r.prize.name)}</div>
+        ${r.prize.text?`<div class="ri-text">${esc(r.prize.text)}</div>`:''}
       </div>
       <div class="ri-actions">
-        ${r.dlUrl?`<button class="ri-dl" onclick="dlSingle(${i})">⬇ DL</button>`
+        ${r.dlUrl?`<button class="ri-dl" onclick="dlBlob('${r.dlUrl}','${esc(r.dlName||'prize').replace(/'/g,'')}')">⬇ DL</button>`
                  :r.prize.hasFile?`<span style="font-size:10px;color:rgba(255,255,255,0.3);">受信中...</span>`:''}
         ${r.prize.text?`<button class="ri-copy" onclick="copyText(${i})">📋</button>`:''}
       </div>
     </div>`).join('');
 }
 
-function dlSingle(idx){
-  const r=st.results[idx];if(!r?.dlUrl)return;
-  const a=document.createElement('a');a.href=r.dlUrl;a.download=r.dlName||'prize';
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
+async function prepareZip(){
+  const btn=document.getElementById('batchDlBtn');
+  const files=st.results.filter(r=>r.arrayBuffer);
+  if(!files.length)return;
+
+  // JSZip CDN未ロード時のフォールバック
+  if(typeof JSZip==='undefined'){
+    btn.textContent='⬇ 個別DLをご利用ください（ZIP利用不可）';
+    btn.disabled=true;return;
+  }
+
+  // 同一ファイル名は1つだけ（同一景品の重複除去）
+  const seen=new Set();
+  const unique=files.filter(r=>{if(seen.has(r.dlName))return false;seen.add(r.dlName);return true;});
+
+  if(unique.length===1){
+    if(_zipUrl)URL.revokeObjectURL(_zipUrl);
+    _zipUrl=unique[0].dlUrl;_zipName=unique[0].dlName||'prize';
+    btn.textContent='⬇ ファイルをダウンロード';btn.disabled=false;
+    btn.onclick=()=>dlBlob(_zipUrl,_zipName);
+    return;
+  }
+
+  // 複数：JSZipでまとめる
+  try{
+    const zip=new JSZip();
+    for(const r of unique)zip.file(r.dlName||'prize',r.arrayBuffer);
+    const content=await zip.generateAsync({type:'blob'},m=>{
+      btn.textContent=`ZIP準備中... ${Math.round(m.percent)}%`;
+    });
+    if(_zipUrl)URL.revokeObjectURL(_zipUrl);
+    _zipUrl=URL.createObjectURL(content);_zipName='gacha-prizes.zip';
+    btn.textContent='⬇ 全ファイルをまとめてDL（ZIP）';
+    btn.disabled=false;
+    btn.onclick=()=>dlBlob(_zipUrl,_zipName);
+  }catch(e){
+    console.error('prepareZip error:',e);
+    btn.textContent='ZIP作成失敗 - 個別DLをご利用ください';btn.disabled=false;
+  }
 }
 
 function copyText(idx){
   const r=st.results[idx];if(!r?.prize.text)return;
   navigator.clipboard.writeText(r.prize.text).then(()=>{
-    const btn=document.querySelector(`#resultsList .result-item:nth-child(${idx+1}) .ri-copy`);
-    if(btn){const orig=btn.textContent;btn.textContent='✅';setTimeout(()=>btn.textContent=orig,1500);}
+    const btns=document.querySelectorAll('#resultsList .result-item');
+    const copyBtn=btns[idx]?.querySelector('.ri-copy');
+    if(copyBtn){const orig=copyBtn.textContent;copyBtn.textContent='✅';setTimeout(()=>copyBtn.textContent=orig,1500);}
   }).catch(()=>alert(r.prize.text));
-}
-
-function skipAll(){
-  // 今引いた分だけで即リザルトへ（残りは引かない）
-  clearTimeout(_spinTimeout);
-  st.fastMode=false;st.spinning=false;
-  document.getElementById('overlay').classList.remove('show');
-  showResults();
-}
-
-function batchDownload(){
-  const files=st.results.filter(r=>r.dlUrl);
-  if(!files.length)return;
-  const btn=document.getElementById('batchDlBtn');
-
-  if(files.length===1){
-    // 1ファイルだけなら直接ダウンロード
-    dlSingle(st.results.findIndex(r=>r.dlUrl));
-    return;
-  }
-
-  // 複数ファイル → JSZipで1つにまとめる
-  btn.disabled=true;btn.textContent='ZIP作成中...';
-  (async()=>{
-    try{
-      const zip=new JSZip();
-      const seen=new Set();
-      for(const r of files){
-        // 重複ファイル名は (2) (3) のようにリネーム
-        let name=r.dlName||'prize';
-        if(seen.has(name)){
-          let c=2;const dot=name.lastIndexOf('.');
-          const base=dot>=0?name.slice(0,dot):name;
-          const ext=dot>=0?name.slice(dot):'';
-          while(seen.has(`${base} (${c})${ext}`))c++;
-          name=`${base} (${c})${ext}`;
-        }
-        seen.add(name);
-        const res=await fetch(r.dlUrl);
-        zip.file(name,await res.blob());
-      }
-      const content=await zip.generateAsync({type:'blob'},m=>{
-        btn.textContent=`ZIP作成中... ${Math.round(m.percent)}%`;
-      });
-      const url=URL.createObjectURL(content);
-      const a=document.createElement('a');
-      a.href=url;a.download='gacha-prizes.zip';
-      document.body.appendChild(a);a.click();document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      btn.disabled=false;btn.textContent='⬇ 全ファイルをまとめてDL';
-    }catch(e){
-      console.error('batchDownload error:',e);
-      btn.disabled=false;btn.textContent='⬇ 全ファイルをまとめてDL';
-      alert('ZIPの作成に失敗しました。個別DLをお試しください。');
-    }
-  })();
 }
 
 function closeResults(){showScreen('screen-gacha');setGachaBtn(true);}
 
-/* NAV */
+/* ===== HISTORY ===== */
+async function showHistory(){
+  await renderHistory();
+  showScreen('screen-history');
+}
+
+async function renderHistory(){
+  const list=document.getElementById('historyList');
+  const all=await loadAllHistory().catch(()=>[]);
+  if(!all.length){list.innerHTML='<div class="empty-history">📭 保存された景品はありません</div>';return;}
+
+  // セッションごとにグループ化
+  const sessions={};
+  all.sort((a,b)=>b.timestamp-a.timestamp).forEach(item=>{
+    if(!sessions[item.sessionId])sessions[item.sessionId]={label:item.sessionLabel,items:[]};
+    sessions[item.sessionId].items.push(item);
+  });
+
+  list.innerHTML=Object.entries(sessions).map(([sid,sess])=>`
+    <div class="history-session">
+      <div class="history-session-hdr">
+        <span>📅 ${sess.label}</span>
+        <span>${sess.items.length}件</span>
+      </div>
+      ${sess.items.map(item=>`
+        <div class="history-item">
+          <span class="hi-badge" style="background:${item.rarityColor};">${esc(item.rarityName)}</span>
+          <div class="hi-info">
+            <div class="hi-name">${esc(item.prizeName)}</div>
+            ${item.prizeText?`<div class="hi-text">${esc(item.prizeText)}</div>`:''}
+          </div>
+          <div style="display:flex;gap:5px;flex-shrink:0;">
+            ${item.hasFile?`<button class="hi-dl" onclick="dlFromHistory(${item.id})">⬇</button>`:''}
+            ${item.prizeText?`<button class="hi-copy" onclick="copyHistText(${item.id})">📋</button>`:''}
+          </div>
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+async function dlFromHistory(id){
+  const all=await loadAllHistory();
+  const item=all.find(a=>a.id===id);
+  if(!item||!item.arrayBuffer)return alert('ファイルデータが見つかりません');
+  const blob=new Blob([item.arrayBuffer],{type:item.dlMime||'application/octet-stream'});
+  const url=URL.createObjectURL(blob);
+  dlBlob(url,item.dlName||'prize');
+  // ダウンロード後にURLを解放
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+}
+
+async function copyHistText(id){
+  const all=await loadAllHistory();
+  const item=all.find(a=>a.id===id);
+  if(!item?.prizeText)return;
+  navigator.clipboard.writeText(item.prizeText).catch(()=>alert(item.prizeText));
+}
+
+async function clearHistory(){
+  if(!confirm('履歴をすべて削除しますか？'))return;
+  await clearAllHistory();
+  document.getElementById('histBtn').style.display='none';
+  renderHistory();
+}
+
+/* ===== NAV ===== */
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
 function setConnText(t){document.getElementById('connText').textContent=t;}
 

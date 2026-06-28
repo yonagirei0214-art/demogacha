@@ -520,6 +520,7 @@ function handleConn(conn){
     delete state.connections[conn.peer];
     updateStats();renderListeners();
   });
+  conn.on('error',e=>console.warn('conn error:',conn.peer,e));
 }
 
 function handleIdentify(conn,name){
