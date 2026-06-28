@@ -542,7 +542,7 @@ function handleSpin(conn){
   conn.send({
     type:'spin_result',
     rarity:{name:result.rarity.name,color:result.rarity.color},
-    prize:{name:result.prize.name,text:result.prize.text,hasFile:!!result.prize.file,
+    prize:{name:result.prize.name,text:result.prize.text,hasFile:!!(result.prize.file&&result.prize.file.arrayBuffer),
       fileName:result.prize.file?.name||null,mimeType:result.prize.file?.mimeType||null},
     remainingSpins:l.remainingSpins
   });
@@ -803,7 +803,7 @@ async function resetAll(){
   if(!confirm('すべての設定・景品ファイル・リスナー情報をリセットしますか？'))return;
   localStorage.removeItem(LS_KEY);
   await dbClearAll().catch(()=>{});
-  state.rarities=[];state.listeners=[];state.log=[];state.winCount=0;
+  state.rarities=[];state.listeners={};state.log=[];state.winCount=0;
   document.getElementById('costPerSpin').value=100;
   renderRarities();renderListeners();renderLog();updateStats();
   toast('リセットしました');

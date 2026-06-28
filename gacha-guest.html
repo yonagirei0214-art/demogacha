@@ -501,10 +501,17 @@ function onData(data){
       st.results=[];st.currentResultIdx=-1;_zipUrl=null;
       st.sessionId='sess-'+Date.now();
       st.sessionLabel=new Date().toLocaleString('ja-JP',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+      // 再接続時の状態リセット
+      st.spinning=false;st.animDone=false;st.fileDone=false;
+      st.fastMode=false;st.ignoreSpins=0;
+      clearTimeout(_spinTimeout);
+      document.getElementById('overlay').classList.remove('show');
       document.getElementById('playerName').textContent=data.name||st.name;
       document.getElementById('spinsNum').textContent=st.remainingSpins;
       document.getElementById('costHint').textContent=data.costPerSpin+'Pt / 1回';
-      showScreen('screen-gacha');break;
+      showScreen('screen-gacha');
+      setGachaBtn(true);
+      break;
     case 'error':
       showScreen('screen-name');
       document.getElementById('nameError').innerHTML=`<div class="error-box">${data.message}</div>`;break;
@@ -658,6 +665,7 @@ function nextSpin(){
   if(!st.conn?.open)return;
   resetOverlay();
   st.animDone=false;st.fileDone=false;st.dlUrl=null;st.spinning=true;
+  setGachaBtn(false);
   _spinTimeout=setTimeout(()=>{
     if(st.spinning&&!st.fastMode){forceCloseOverlay();alert('タイムアウト：ホストからの返答がありませんでした。');}
   },8000);
